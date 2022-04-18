@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './Component/LoginPage';
+import Main from './Component/Main';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id : ''
+    }
+  }
+
+  searchText = () => {
+    alert("searchText!")
+    console.log(window.location)
+    console.log(window.location.href)
+    window.location.href = '/search?searchText=' + this.state.searchText;
+    // const queryObj = queryString.parse(window.location.search);
+    // console.log(queryObj);
+  }
+
+  login=(id)=>{
+    alert(`환영합니다 ${id}님`)
+    this.setState({
+      id : id
+    })
+    window.location.href = '/search/'
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<LoginPage login={this.login}/>} />
+            <Route path='/search/' element={<Main id={this.state.id}/>} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    )
+  }
 }
 
 export default App;
+

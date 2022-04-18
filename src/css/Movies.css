@@ -1,0 +1,20 @@
+.Movies{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: beige;
+}
+.Movie{
+    width: 33%;
+    padding: 10px;
+    text-align: center;
+}
+.Movie img{
+    width: 33%;
+    height: 100%;
+    float: left;
+}
+.Movie p,a{
+    padding-top : 15px;
+}
